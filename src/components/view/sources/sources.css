@@ -1,34 +1,61 @@
 .sources {
     display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    height: 120px;
-    overflow: auto;
     align-items: center;
-    font: 300 1em 'Fira Sans', sans-serif;
+    gap: 10px;
+    width: 100%;
+    min-height: 110px;
+    padding: 20px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #475569 transparent;
 }
 
 .source__item {
-    background: none;
-    border: 2px solid #30c5ff;
+    flex: 0 0 auto;
+    padding: 12px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-surface);
+    color: var(--color-muted);
     font: inherit;
-    line-height: 1;
-    margin: 0.5em;
-    padding: 1em 2em;
-    color: #70d6ff;
-    transition: 0.25s;
+    font-size: 0.9rem;
     cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .source__item:hover,
 .source__item:focus {
-    border-color: #3fcc59;
-    color: #69db7e;
-    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
-    transform: translateY(-0.25em);
+    border-color: var(--color-accent);
+    background: var(--color-surface-hover);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.source__item:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
 }
 
 .source__item-name {
-    font-weight: 400;
+    font-weight: 600;
     white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .sources {
+        min-height: 90px;
+        padding: 15px 0;
+        gap: 8px;
+    }
+
+    .source__item {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
 }

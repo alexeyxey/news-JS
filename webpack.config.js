@@ -26,7 +26,6 @@ const baseConfig = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/news-JS/',
     },
     plugins: [
         new DotenvWebpackPlugin(),
@@ -41,6 +40,7 @@ const baseConfig = {
 module.exports = ({ mode }) => {
     const isProductionMode = mode === 'prod';
     const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
+    baseConfig.output.publicPath = isProductionMode ? '/news-JS/' : '/';
 
     return merge(baseConfig, envConfig);
 };
